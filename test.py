@@ -1,4 +1,6 @@
 import tweepy
+import json
+
 from tweepy import OAuthHandler
 
 consumer_key = 'yMRKHnT3x8Vyhp4rRY0zofBJA'
@@ -11,10 +13,15 @@ auth.set_access_token(access_token, access_secret)
 
 api = tweepy.API(auth)
 
-#for status in tweepy.Cursor(api.home_timeline).items(10):
-    # Process a single status
-#    print(status.text)
+# for status in tweepy.Cursor(api.home_timeline).items(10):
+#     # Process a single status
+#     print(status.text)
+
+def process_or_store(tweet):
+    print(json.dumps(tweet))
 
 for status in tweepy.Cursor(api.home_timeline).items(10):
     # Process a single status
     process_or_store(status._json)
+
+

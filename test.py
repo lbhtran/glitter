@@ -24,4 +24,15 @@ for status in tweepy.Cursor(api.home_timeline).items(10):
     # Process a single status
     process_or_store(status._json)
 
+# list of all follower
+for friend in tweepy.Cursor(api.friends).items():
+    process_or_store(friend._json)
+
+# list of my tweets
+for tweet in tweepy.Cursor(api.user_timeline).items():
+    process_or_store(tweet._json)
+
+
+
+
 
